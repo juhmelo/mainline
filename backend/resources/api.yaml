@@ -1,0 +1,47 @@
+swagger: '2.0'
+
+info:
+  title: mainline
+  version: '1.0'
+
+basePath: /api
+produces:
+- application/json
+consumes:
+- application/json
+
+security:
+- oauth2: [uid]
+
+paths:
+  '/messages':
+    get:
+      operationId: mainline.api/get-messages
+      parameters:
+      - name: limit
+        in: query
+        type: integer
+        required: true
+      - name: offset
+        in: query
+        type: integer
+        required: true
+      responses:
+        default:
+          description: get messages
+    post:
+      operationId: mainline.api/post-messages
+      parameters:
+      - name: message
+        in: body
+      responses:
+        default:
+          description: post a message, returns message id in response
+
+securityDefinitions:
+  oauth2:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://example.com/oauth2/dialog
+    scopes:
+      uid: Unique identifier of the user accessing the service.

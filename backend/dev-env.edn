@@ -1,0 +1,2 @@
+{:http-port 8080
+ :tokeninfo-url "https://www.googleapis.com/oauth2/v3/tokeninfo"}
